@@ -2,11 +2,12 @@ import { Truck } from "lucide-react";
 import { useState } from "react";
 
 import { EmptyState } from "@/components/common/EmptyState";
-import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { PageHeader } from "@/components/common/PageHeader";
+import { CreateVehicleForm } from "@/features/vehicles/CreateVehicleForm";
 import { VehicleCard } from "@/features/vehicles/VehicleCard";
 import { VehicleDetail } from "@/features/vehicles/VehicleDetail";
 import { VehicleFilters } from "@/features/vehicles/VehicleFilters";
+import { VehicleGridSkeleton } from "@/features/vehicles/VehicleGridSkeleton";
 import { useVehicles } from "@/hooks/useVehicles";
 import { useFilterStore } from "@/store/filterStore";
 
@@ -22,13 +23,14 @@ export function VehiclesPage() {
         title="Vehicles"
         count={vehicles?.length}
         description="Collection fleet status and assignments"
+        action={<CreateVehicleForm />}
       />
 
       {/* Filters */}
       <VehicleFilters />
 
       {/* Content */}
-      {isPending && <LoadingSpinner />}
+      {isPending && <VehicleGridSkeleton />}
       {isError && (
         <EmptyState
           title="Failed to load vehicles"

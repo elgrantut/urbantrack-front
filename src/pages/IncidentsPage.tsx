@@ -1,11 +1,11 @@
 import { AlertTriangle } from "lucide-react";
 
 import { EmptyState } from "@/components/common/EmptyState";
-import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { PageHeader } from "@/components/common/PageHeader";
 import { IncidentDetail } from "@/features/incidents/IncidentDetail";
 import { IncidentFilters } from "@/features/incidents/IncidentFilters";
 import { IncidentList } from "@/features/incidents/IncidentList";
+import { IncidentListSkeleton } from "@/features/incidents/IncidentListSkeleton";
 import { ReportIncidentForm } from "@/features/incidents/ReportIncidentForm";
 import { useIncidents } from "@/hooks/useIncidents";
 import { useFilterStore } from "@/store/filterStore";
@@ -28,7 +28,7 @@ export function IncidentsPage() {
       <IncidentFilters />
 
       {/* Content */}
-      {isPending && <LoadingSpinner />}
+      {isPending && <IncidentListSkeleton />}
       {isError && (
         <EmptyState
           title="Failed to load incidents"

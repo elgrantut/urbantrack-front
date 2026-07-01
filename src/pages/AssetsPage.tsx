@@ -1,10 +1,10 @@
 import { Package } from "lucide-react";
 
 import { EmptyState } from "@/components/common/EmptyState";
-import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { PageHeader } from "@/components/common/PageHeader";
 import { AssetFilters } from "@/features/assets/AssetFilters";
 import { AssetTable } from "@/features/assets/AssetTable";
+import { AssetTableSkeleton } from "@/features/assets/AssetTableSkeleton";
 import { CreateAssetForm } from "@/features/assets/CreateAssetForm";
 import { useAssets } from "@/hooks/useAssets";
 import { useFilterStore } from "@/store/filterStore";
@@ -35,7 +35,7 @@ export function AssetsPage() {
       )}
 
       {/* Content */}
-      {isPending && <LoadingSpinner />}
+      {isPending && <AssetTableSkeleton />}
       {isError && (
         <EmptyState
           title="Failed to load assets"

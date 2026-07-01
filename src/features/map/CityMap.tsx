@@ -4,13 +4,14 @@ import "react-leaflet-cluster/dist/assets/MarkerCluster.Default.css";
 import { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 
-import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { useAssets } from "@/hooks/useAssets";
 import { useIncidents } from "@/hooks/useIncidents";
 import { useFilterStore } from "@/store/filterStore";
 
 import { AssetMarkers } from "./AssetMarkers";
 import { IncidentMarkers } from "./IncidentMarkers";
+import { MapFilters } from "./MapFilters";
+import { MapSkeletonOverlay } from "./MapSkeletonOverlay";
 
 const BA_CENTER: [number, number] = [-34.61, -58.43];
 const DEFAULT_ZOOM = 12;
@@ -55,6 +56,9 @@ export function CityMap({ className }: Props) {
           <span className="text-muted-foreground">({incidents.length})</span>
         </label>
       </div>
+
+      {/* Map filter controls overlay */}
+      <MapFilters />
 
       {/* Legend */}
       <div className="absolute bottom-8 left-2 z-[1000] rounded-lg border bg-white/90 px-3 py-2 text-xs shadow-sm backdrop-blur dark:bg-gray-900/90">
@@ -103,11 +107,7 @@ export function CityMap({ className }: Props) {
         </div>
       </div>
 
-      {isLoading && (
-        <div className="absolute inset-0 z-[999] flex items-center justify-center bg-white/50 dark:bg-black/50">
-          <LoadingSpinner />
-        </div>
-      )}
+      {isLoading && <MapSkeletonOverlay />}
 
       <MapContainer
         center={BA_CENTER}

@@ -5,6 +5,7 @@ import { fetcher } from "./client";
 export type AssetFilters = {
   status?: AssetStatus;
   type?: AssetType;
+  zoneId?: string;
 };
 
 export type CreateAssetPayload = Omit<UrbanAsset, "id">;

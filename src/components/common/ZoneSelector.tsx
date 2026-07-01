@@ -13,6 +13,7 @@ type Props = {
   placeholder?: string;
   includeAll?: boolean;
   className?: string;
+  contentClassName?: string;
 };
 
 export function ZoneSelector({
@@ -21,6 +22,7 @@ export function ZoneSelector({
   placeholder = "All zones",
   includeAll = true,
   className,
+  contentClassName,
 }: Props) {
   const { data: zones = [], isLoading } = useZones();
 
@@ -29,7 +31,7 @@ export function ZoneSelector({
       <SelectTrigger className={className} disabled={isLoading}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className={contentClassName}>
         {includeAll && <SelectItem value="">All zones</SelectItem>}
         {zones.map((zone) => (
           <SelectItem key={zone.id} value={zone.id}>
