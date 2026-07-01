@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { EmptyState } from "@/components/common/EmptyState";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { PageHeader } from "@/components/common/PageHeader";
 import { VehicleCard } from "@/features/vehicles/VehicleCard";
 import { VehicleDetail } from "@/features/vehicles/VehicleDetail";
 import { VehicleFilters } from "@/features/vehicles/VehicleFilters";
@@ -17,17 +18,11 @@ export function VehiclesPage() {
   return (
     <div className="flex flex-col gap-4 p-4">
       {/* Header */}
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight">
-          Vehicles
-          {vehicles && (
-            <span className="text-muted-foreground ml-2 text-sm font-normal">
-              ({vehicles.length})
-            </span>
-          )}
-        </h1>
-        <p className="text-muted-foreground text-sm">Collection fleet status and assignments</p>
-      </div>
+      <PageHeader
+        title="Vehicles"
+        count={vehicles?.length}
+        description="Collection fleet status and assignments"
+      />
 
       {/* Filters */}
       <VehicleFilters />

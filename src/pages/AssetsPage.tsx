@@ -2,6 +2,7 @@ import { Package } from "lucide-react";
 
 import { EmptyState } from "@/components/common/EmptyState";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { PageHeader } from "@/components/common/PageHeader";
 import { AssetFilters } from "@/features/assets/AssetFilters";
 import { AssetTable } from "@/features/assets/AssetTable";
 import { CreateAssetForm } from "@/features/assets/CreateAssetForm";
@@ -15,15 +16,11 @@ export function AssetsPage() {
   return (
     <div className="flex flex-col gap-4 p-4">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-semibold tracking-tight">Assets</h1>
-          <p className="text-muted-foreground text-sm">
-            Bins, containers and benches across all zones
-          </p>
-        </div>
-        <CreateAssetForm />
-      </div>
+      <PageHeader
+        title="Assets"
+        description="Bins, containers and benches across all zones"
+        action={<CreateAssetForm />}
+      />
 
       {/* Filters */}
       <AssetFilters />

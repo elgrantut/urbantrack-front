@@ -1,5 +1,6 @@
 import { AlertTriangle, CheckCircle2, Package, Truck } from "lucide-react";
 
+import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CityMap } from "@/features/map/CityMap";
 import { useAssets } from "@/hooks/useAssets";
@@ -50,10 +51,10 @@ export function DashboardPage() {
   return (
     <div className="flex h-full flex-col gap-4 p-4">
       {/* Header */}
-      <div>
-        <h1 className="text-xl font-semibold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground text-sm">City operations overview — Buenos Aires</p>
-      </div>
+      <PageHeader
+        title="Dashboard"
+        description="City operations overview — Buenos Aires"
+      />
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">

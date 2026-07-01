@@ -2,6 +2,7 @@ import { AlertTriangle } from "lucide-react";
 
 import { EmptyState } from "@/components/common/EmptyState";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { PageHeader } from "@/components/common/PageHeader";
 import { IncidentDetail } from "@/features/incidents/IncidentDetail";
 import { IncidentFilters } from "@/features/incidents/IncidentFilters";
 import { IncidentList } from "@/features/incidents/IncidentList";
@@ -16,22 +17,12 @@ export function IncidentsPage() {
   return (
     <div className="flex flex-col gap-4 p-4">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-semibold tracking-tight">
-            Incidents
-            {incidents && (
-              <span className="text-muted-foreground ml-2 text-sm font-normal">
-                ({incidents.length})
-              </span>
-            )}
-          </h1>
-          <p className="text-muted-foreground text-sm">
-            Active and resolved incidents across all zones
-          </p>
-        </div>
-        <ReportIncidentForm />
-      </div>
+      <PageHeader
+        title="Incidents"
+        count={incidents?.length}
+        description="Active and resolved incidents across all zones"
+        action={<ReportIncidentForm />}
+      />
 
       {/* Filters */}
       <IncidentFilters />
