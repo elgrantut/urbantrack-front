@@ -1,8 +1,12 @@
+import { ThemeProvider } from "next-themes";
+import { RouterProvider } from "react-router";
+import { router } from "@/routes";
+
 function App() {
   return (
-    <>
-      <p className="text-blue-500">Hello world</p>
-    </>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
