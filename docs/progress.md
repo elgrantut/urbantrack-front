@@ -77,15 +77,29 @@ Vite 8 + React 19 SPA · Tailwind v4 (CSS-first, `src/index.css`) · shadcn/ui r
 - **US-14** `src/features/vehicles/CreateVehicleForm.tsx` — Dialog + RHF + Zod + `useCreateVehicle` + sonner toast; fields: plate, type, capacity (kg), zone
 - `src/pages/VehiclesPage.tsx` — filters + count + card grid + empty/error + detail sheet + "Register Vehicle" button
 
+### Testing Infrastructure
+
+- Vitest 4 configured with `globals: true`, `environment: "jsdom"`, `setupFiles: ["./src/test/setup.ts"]`
+- React Testing Library (`@testing-library/react`, `@testing-library/user-event` v14, `@testing-library/jest-dom` v6)
+- Coverage via `@vitest/coverage-v8` (`pnpm test:coverage`)
+- `src/test/setup.ts` — imports jest-dom matchers + polyfills for Radix UI (`hasPointerCapture`, `scrollIntoView`, `ResizeObserver`)
+- `tsconfig.app.json` types extended with `"vitest/globals"` and `"@testing-library/jest-dom"`
+- Scripts: `pnpm test` (run once) · `pnpm test:watch` (watch mode) · `pnpm test:coverage`
+- **46 tests, 4 test files, all passing:**
+  - `src/utils/formatters.test.ts` — 14 tests: `formatCapacity`, `truncate`, `formatRelativeTime`, `formatDateTime`
+  - `src/store/filterStore.test.ts` — 12 tests: per-filter CRUD, `resetAllFilters`, isolation between groups
+  - `src/store/uiStore.test.ts` — 10 tests: marker selection, zone selection, sheet open/close
+  - `src/features/vehicles/VehicleFilters.test.tsx` — 10 tests: rendering, clear button visibility, clear action, Radix Select interaction (opens dropdown, picks status, verifies store)
+
 ### Build status
 
-`pnpm build` ✅ · `pnpm lint` ✅ (exit 0, 2 expected shadcn warnings) · `pnpm fmt` ✅
+`pnpm build` ✅ · `pnpm lint` ✅ (exit 0, 2 expected shadcn warnings) · `pnpm test` ✅ (46/46)
 
 ---
 
-## Not Yet Implemented
+## Not Yet Implemented / In Progress
 
-All planned user stories are now complete. No remaining items from the original spec.
+No remaining items.
 
 ---
 
