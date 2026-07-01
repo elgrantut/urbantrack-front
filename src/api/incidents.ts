@@ -1,8 +1,5 @@
-import type {
-  Incident,
-  IncidentStatus,
-  IncidentType,
-} from "@/types";
+import type { Incident, IncidentStatus, IncidentType } from "@/types";
+
 import { fetcher, fetcherOrNull } from "./client";
 
 export type IncidentFilters = {
@@ -21,9 +18,7 @@ export type CreateIncidentPayload = {
   status?: IncidentStatus;
 };
 
-export function getIncidents(
-  filters: IncidentFilters = {},
-): Promise<Incident[]> {
+export function getIncidents(filters: IncidentFilters = {}): Promise<Incident[]> {
   return fetcher<Incident[]>("/incidents", { params: filters });
 }
 
@@ -31,8 +26,6 @@ export function getIncidentById(id: string): Promise<Incident | null> {
   return fetcherOrNull<Incident>(`/incidents/${id}`);
 }
 
-export function createIncident(
-  data: CreateIncidentPayload,
-): Promise<Incident> {
+export function createIncident(data: CreateIncidentPayload): Promise<Incident> {
   return fetcher<Incident>("/incidents", { method: "POST", body: data });
 }

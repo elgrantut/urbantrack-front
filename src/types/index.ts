@@ -47,8 +47,7 @@ export const IncidentStatus = {
   IN_PROGRESS: "IN_PROGRESS",
   RESOLVED: "RESOLVED",
 } as const;
-export type IncidentStatus =
-  (typeof IncidentStatus)[keyof typeof IncidentStatus];
+export type IncidentStatus = (typeof IncidentStatus)[keyof typeof IncidentStatus];
 
 export interface Incident {
   id: string;
@@ -75,8 +74,7 @@ export const VehicleStatus = {
   MAINTENANCE: "MAINTENANCE",
   OUT_OF_SERVICE: "OUT_OF_SERVICE",
 } as const;
-export type VehicleStatus =
-  (typeof VehicleStatus)[keyof typeof VehicleStatus];
+export type VehicleStatus = (typeof VehicleStatus)[keyof typeof VehicleStatus];
 
 export interface Vehicle {
   id: string;

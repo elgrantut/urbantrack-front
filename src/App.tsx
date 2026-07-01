@@ -1,5 +1,6 @@
 import { ThemeProvider } from "next-themes";
 import { RouterProvider } from "react-router";
+
 import { router } from "@/routes";
 
 function App() {

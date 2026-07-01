@@ -1,4 +1,5 @@
 import type { AssetStatus, AssetType, UrbanAsset } from "@/types";
+
 import { fetcher } from "./client";
 
 export type AssetFilters = {

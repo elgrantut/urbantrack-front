@@ -1,4 +1,5 @@
 import type { Vehicle, VehicleStatus, VehicleType } from "@/types";
+
 import { fetcher, fetcherOrNull } from "./client";
 
 export type VehicleFilters = {
@@ -16,9 +17,7 @@ export type CreateVehiclePayload = {
   status?: VehicleStatus;
 };
 
-export function getVehicles(
-  filters: VehicleFilters = {},
-): Promise<Vehicle[]> {
+export function getVehicles(filters: VehicleFilters = {}): Promise<Vehicle[]> {
   return fetcher<Vehicle[]>("/vehicles", { params: filters });
 }
 

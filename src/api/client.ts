@@ -14,10 +14,7 @@ export class ApiError extends Error {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function buildUrl(
-  path: string,
-  params?: Record<string, string | undefined>,
-): string {
+function buildUrl(path: string, params?: Record<string, string | undefined>): string {
   const url = new URL(path, BASE_URL);
   if (params) {
     for (const [key, value] of Object.entries(params)) {
@@ -51,10 +48,7 @@ export async function fetcher<T>(
   });
 
   if (!response.ok) {
-    throw new ApiError(
-      response.status,
-      `HTTP ${response.status}: ${response.statusText}`,
-    );
+    throw new ApiError(response.status, `HTTP ${response.status}: ${response.statusText}`);
   }
 
   return response.json() as Promise<T>;
@@ -71,10 +65,7 @@ export async function fetcherOrNull<T>(path: string): Promise<T | null> {
   if (response.status === 404) return null;
 
   if (!response.ok) {
-    throw new ApiError(
-      response.status,
-      `HTTP ${response.status}: ${response.statusText}`,
-    );
+    throw new ApiError(response.status, `HTTP ${response.status}: ${response.statusText}`);
   }
 
   return response.json() as Promise<T>;

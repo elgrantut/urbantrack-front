@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+
 import { MainLayout } from "@/features/layout/MainLayout";
 import { AssetsPage } from "@/pages/AssetsPage";
 import { DashboardPage } from "@/pages/DashboardPage";

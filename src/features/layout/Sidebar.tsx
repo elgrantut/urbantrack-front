@@ -1,22 +1,10 @@
+import { AlertTriangle, LayoutDashboard, Menu, Moon, Package, Sun, Truck } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useState } from "react";
 import { NavLink } from "react-router";
-import { useTheme } from "next-themes";
-import {
-  AlertTriangle,
-  LayoutDashboard,
-  Menu,
-  Moon,
-  Package,
-  Sun,
-  Truck,
-} from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 // ─── Nav config ───────────────────────────────────────────────────────────────
@@ -73,16 +61,14 @@ function ThemeToggle() {
 }
 
 function Brand() {
-  return (
-    <span className="text-base font-semibold tracking-tight">UrbanTrack</span>
-  );
+  return <span className="text-base font-semibold tracking-tight">UrbanTrack</span>;
 }
 
 // ─── Desktop sidebar ─────────────────────────────────────────────────────────
 
 export function DesktopSidebar() {
   return (
-    <aside className="hidden w-56 shrink-0 flex-col border-r bg-sidebar md:flex">
+    <aside className="bg-sidebar hidden w-56 shrink-0 flex-col border-r md:flex">
       {/* Header */}
       <div className="flex h-14 items-center border-b px-4">
         <Brand />
@@ -95,7 +81,7 @@ export function DesktopSidebar() {
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t px-3 py-2">
-        <span className="text-xs text-muted-foreground">Buenos Aires</span>
+        <span className="text-muted-foreground text-xs">Buenos Aires</span>
         <ThemeToggle />
       </div>
     </aside>
@@ -131,7 +117,7 @@ export function MobileTopBar() {
           </div>
 
           <div className="flex items-center justify-between border-t px-3 py-2">
-            <span className="text-xs text-muted-foreground">Buenos Aires</span>
+            <span className="text-muted-foreground text-xs">Buenos Aires</span>
             <ThemeToggle />
           </div>
         </SheetContent>

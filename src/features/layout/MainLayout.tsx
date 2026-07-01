@@ -1,9 +1,10 @@
 import { Outlet } from "react-router";
+
 import { DesktopSidebar, MobileTopBar } from "./Sidebar";
 
 export function MainLayout() {
   return (
-    <div className="flex h-svh bg-background">
+    <div className="bg-background flex h-svh">
       <DesktopSidebar />
 
       <div className="flex min-w-0 flex-1 flex-col overflow-hidden">

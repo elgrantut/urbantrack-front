@@ -1,4 +1,5 @@
 import type { Zone } from "@/types";
+
 import { fetcher, fetcherOrNull } from "./client";
 
 export function getZones(): Promise<Zone[]> {

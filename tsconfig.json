@@ -10,15 +10,9 @@
   ],
   "compilerOptions": {
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@actions/*": [
-        "./src/actions/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ]
-    },
+      "@/*": ["./src/*"],
+      "@actions/*": ["./src/actions/*"],
+      "@components/*": ["./src/components/*"]
+    }
   }
 }

@@ -4,17 +4,17 @@
 
 **Vite + React 19 SPA** — not Next.js. No SSR, no server components, no API routes.
 
-| Layer | Tool |
-|---|---|
-| Bundler | Vite 8 |
-| Styling | Tailwind CSS v4 (CSS-first, no `tailwind.config.*`) |
-| Components | shadcn/ui (radix-nova style) |
-| State | Zustand |
-| Data fetching | TanStack React Query |
-| Validation | Zod 4 (exact pin) |
-| Linter | Oxlint (not ESLint) |
-| Formatter | Oxfmt (not Prettier) |
-| Package manager | pnpm |
+| Layer           | Tool                                                |
+| --------------- | --------------------------------------------------- |
+| Bundler         | Vite 8                                              |
+| Styling         | Tailwind CSS v4 (CSS-first, no `tailwind.config.*`) |
+| Components      | shadcn/ui (radix-nova style)                        |
+| State           | Zustand                                             |
+| Data fetching   | TanStack React Query                                |
+| Validation      | Zod 4 (exact pin)                                   |
+| Linter          | Oxlint (not ESLint)                                 |
+| Formatter       | Oxfmt (not Prettier)                                |
+| Package manager | pnpm                                                |
 
 ## Commands
 
@@ -35,22 +35,29 @@ Typecheck without building: `pnpm exec tsc -b --noEmit`.
 ## Critical Quirks
 
 ### Path aliases
+
 `@/*`, `@actions/*`, `@components/*` are defined in `tsconfig.app.json` (`paths`) and resolved by Vite via `resolve.tsconfigPaths: true` in `vite.config.ts`. No extra plugin is needed. Do **not** install `vite-tsconfig-paths`.
 
 ### Tailwind v4 — no config file
+
 All design tokens live in `src/index.css` inside `@theme inline { ... }` blocks. Do not create `tailwind.config.ts`.
 
 ### shadcn components are generated — do not edit manually
+
 Files in `src/components/ui/` are CLI-generated. To add a component:
+
 ```bash
 pnpm shadcn add <component-name>
 ```
+
 To modify a component, regenerate it or extend it from outside the `ui/` directory.
 
 ### Oxfmt sorts imports
+
 Import ordering is handled by the formatter, not a lint rule. Running `pnpm fmt` will reorder imports. Do not add import-order rules to `.oxlintrc.json`.
 
 ### TypeScript strictness
+
 - `erasableSyntaxOnly: true` — no `enum`, no `namespace`, no legacy decorators
 - `verbatimModuleSyntax: true` — type-only imports must use `import type`
 - `noUnusedLocals` / `noUnusedParameters` — prefix intentionally unused params with `_`
