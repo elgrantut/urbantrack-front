@@ -165,7 +165,9 @@ export function ReportIncidentForm() {
           </div>
 
           {mutation.isError && (
-            <p className="text-destructive text-xs">Failed to report incident. Please try again.</p>
+            <p className="text-destructive text-xs">
+              {mutation.error?.message ?? "Failed to report incident. Please try again."}
+            </p>
           )}
         </form>
 

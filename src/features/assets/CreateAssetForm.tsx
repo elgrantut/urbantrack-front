@@ -182,7 +182,9 @@ export function CreateAssetForm() {
           </div>
 
           {mutation.isError && (
-            <p className="text-destructive text-xs">Failed to create asset. Please try again.</p>
+            <p className="text-destructive text-xs">
+              {mutation.error?.message ?? "Failed to create asset. Please try again."}
+            </p>
           )}
         </form>
 

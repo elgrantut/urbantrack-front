@@ -15,6 +15,10 @@ function makeAssetIcon(color: string): L.DivIcon {
   });
 }
 
+const ASSET_ICONS: Record<string, L.DivIcon> = Object.fromEntries(
+  Object.entries(ASSET_STATUS_HEX).map(([status, hex]) => [status, makeAssetIcon(hex)]),
+);
+
 type Props = {
   assets: UrbanAsset[];
 };
@@ -28,7 +32,7 @@ export function AssetMarkers({ assets }: Props) {
         <Marker
           key={asset.id}
           position={[asset.lat, asset.lng]}
-          icon={makeAssetIcon(ASSET_STATUS_HEX[asset.status])}
+          icon={ASSET_ICONS[asset.status]}
         >
           <Popup>
             <div className="space-y-1 text-sm">

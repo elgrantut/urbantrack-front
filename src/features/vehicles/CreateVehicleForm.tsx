@@ -149,7 +149,7 @@ export function CreateVehicleForm() {
 
           {mutation.isError && (
             <p className="text-destructive text-xs">
-              Failed to register vehicle. Please try again.
+              {mutation.error?.message ?? "Failed to register vehicle. Please try again."}
             </p>
           )}
         </form>
