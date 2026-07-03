@@ -42,9 +42,7 @@ function StatCard({
 
 export function DashboardPage() {
   const { data: allAssets, isPending: assetsPending } = useAssets();
-  const { data: openIncidents, isPending: incidentsPending } = useIncidents({
-    status: "REPORTED",
-  });
+  const { data: allIncidents, isPending: incidentsPending } = useIncidents();
   const { data: activeVehicles, isPending: vehiclesPending } = useVehicles({
     status: "ACTIVE",
   });
@@ -53,6 +51,10 @@ export function DashboardPage() {
 
   const needsAttention = allAssets?.filter(
     (a) => a.status === "DAMAGED" || a.status === "FULL" || a.status === "OUT_OF_SERVICE",
+  ).length;
+
+  const openIncidentCount = allIncidents?.filter(
+    (i) => i.status === "REPORTED" || i.status === "IN_PROGRESS",
   ).length;
 
   return (
@@ -78,7 +80,7 @@ export function DashboardPage() {
           />
           <StatCard
             label="Open Incidents"
-            value={openIncidents?.length}
+            value={openIncidentCount}
             icon={CheckCircle2}
             isLoading={incidentsPending}
           />

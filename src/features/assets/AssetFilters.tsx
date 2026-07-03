@@ -1,3 +1,4 @@
+import { ZoneSelector } from "@/components/common/ZoneSelector";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -12,7 +13,7 @@ import { AssetStatus, AssetType } from "@/types";
 export function AssetFilters() {
   const { assetFilters, setAssetFilters, resetAssetFilters } = useFilterStore();
 
-  const hasFilters = !!(assetFilters.status ?? assetFilters.type);
+  const hasFilters = !!(assetFilters.status ?? assetFilters.type ?? assetFilters.zoneId);
 
   return (
     <div className="flex flex-wrap items-center gap-2">
@@ -61,6 +62,12 @@ export function AssetFilters() {
           ))}
         </SelectContent>
       </Select>
+
+      <ZoneSelector
+        value={assetFilters.zoneId}
+        onChange={(v) => setAssetFilters({ ...assetFilters, zoneId: v })}
+        className="w-36"
+      />
 
       {/* Clear */}
       {hasFilters && (

@@ -14,7 +14,7 @@ export function PageHeader({ title, count, description, action, className }: Pro
   return (
     <div className={cn("flex items-start justify-between gap-4 py-8", className)}>
       <div>
-        <h1 className="text-2xl font-bold tracking-tight md:text-5xl">
+        <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
           {title}
           {count !== undefined && (
             <span className="text-muted-foreground ml-2.5 text-base font-normal">

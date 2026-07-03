@@ -8,7 +8,7 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useIncidentById } from "@/hooks/useIncidents";
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import { useUiStore } from "@/store/uiStore";
 import { formatDateTime } from "@/utils/formatters";
 import { INCIDENT_STATUS_HEX } from "@/utils/statusColors";
@@ -31,8 +31,7 @@ export function IncidentDetail() {
     isError,
   } = useIncidentById(sheetOpen ? selectedMarkerId : null);
 
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   function handleClose() {
     setSheetOpen(false);

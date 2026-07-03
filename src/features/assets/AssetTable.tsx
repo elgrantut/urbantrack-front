@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import type { UrbanAsset } from "@/types";
 
 type Props = {
@@ -15,8 +15,7 @@ type Props = {
 };
 
 export function AssetTable({ assets }: Props) {
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   return (
     <div className="rounded-lg border">

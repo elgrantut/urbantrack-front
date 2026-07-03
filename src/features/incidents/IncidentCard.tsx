@@ -2,7 +2,7 @@ import { AlertCircle, AlertTriangle, HelpCircle, Trash2 } from "lucide-react";
 
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import { useUiStore } from "@/store/uiStore";
 import type { Incident, IncidentType } from "@/types";
 import { formatRelativeTime, truncate } from "@/utils/formatters";
@@ -20,8 +20,7 @@ type Props = {
 
 export function IncidentCard({ incident }: Props) {
   const { setSelectedMarkerId, setSheetOpen } = useUiStore();
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   const Icon = TYPE_ICON[incident.type];
 

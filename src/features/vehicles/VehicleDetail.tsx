@@ -5,7 +5,7 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useVehicleById } from "@/hooks/useVehicles";
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import { formatCapacity } from "@/utils/formatters";
 
 type Props = {
@@ -15,8 +15,7 @@ type Props = {
 
 export function VehicleDetail({ vehicleId, onClose }: Props) {
   const { data: vehicle, isPending, isError } = useVehicleById(vehicleId);
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   return (
     <Sheet

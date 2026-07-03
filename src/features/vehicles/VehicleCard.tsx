@@ -2,7 +2,7 @@ import { Car, Truck, TruckIcon } from "lucide-react";
 
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import type { Vehicle, VehicleType } from "@/types";
 import { formatCapacity } from "@/utils/formatters";
 
@@ -18,8 +18,7 @@ type Props = {
 };
 
 export function VehicleCard({ vehicle, onSelect }: Props) {
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   const Icon = TYPE_ICON[vehicle.type];
 

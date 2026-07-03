@@ -1,7 +1,7 @@
 import L from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 
-import { useZones } from "@/hooks/useZones";
+import { useZoneMap } from "@/hooks/useZones";
 import type { Incident } from "@/types";
 import { formatRelativeTime, truncate } from "@/utils/formatters";
 import { INCIDENT_STATUS_HEX } from "@/utils/statusColors";
@@ -21,8 +21,7 @@ type Props = {
 };
 
 export function IncidentMarkers({ incidents }: Props) {
-  const { data: zones = [] } = useZones();
-  const zoneMap = Object.fromEntries(zones.map((z) => [z.id, z.name]));
+  const zoneMap = useZoneMap();
 
   return (
     <>
